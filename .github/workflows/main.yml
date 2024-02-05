@@ -15,7 +15,7 @@ jobs:
         curl -LO https://mirror.ctan.org/systems/mac/mactex/BasicTeX.pkg
         sudo installer -pkg BasicTeX.pkg -target /
         rm BasicTeX.pkg
-    - run: ls /usr/local/texlive/2023basic/bin/
+    - run: ls /usr/local/texlive/2023basic/bin/universal-darwin
     - run: echo "export PATH=/usr/local/texlive/2023basic/bin/universal-darwin:\$PATH" >> $GITHUB_ENV
     - run: |
         sudo tlmgr update --self
