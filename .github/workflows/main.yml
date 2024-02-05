@@ -16,9 +16,9 @@ jobs:
         sudo installer -pkg BasicTeX.pkg -target /
         rm BasicTeX.pkg
     - run: echo "/usr/local/texlive/2023basic/bin/universal-darwin" >> $GITHUB_PATH
+    - run: sudo tlmgr update --self
     - run: sudo tlmgr install latexmk
     - run: latexmk -xelatex resume.tex
     - uses: actions/upload-artifact@v4
       with:
-        name: resume
         path: resume.pdf
