@@ -17,7 +17,9 @@ jobs:
         rm BasicTeX.pkg
     - run: echo "/usr/local/texlive/2023basic/bin/universal-darwin" >> $GITHUB_PATH
     - run: sudo tlmgr update --self
-    - run: sudo tlmgr install academicons fontawesome5 latexmk moderncv
+    - run: sudo tlmgr install latexmk
+    - run: sudo tlmgr install academicons fontawesome5 multirow
+    - run: sudo tlmgr install moderncv
     - run: latexmk -xelatex resume.tex
     - uses: actions/upload-artifact@v4
       with:
