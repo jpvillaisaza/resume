@@ -1,0 +1,18 @@
+on:
+  push:
+    branches:
+    - main
+  pull_request:
+    branches:
+    - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - run: latexmk -xelatex resume.tex
+    - uses: actions/upload-artifact@v4
+      with:
+        name: resume
+        path: resume.pdf
