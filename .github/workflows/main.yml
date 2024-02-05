@@ -15,6 +15,7 @@ jobs:
         curl -LO https://mirror.ctan.org/systems/mac/mactex/BasicTeX.pkg
         sudo installer -pkg BasicTeX.pkg -target /
         rm BasicTeX.pkg
+    - run: sudo tlmgr install latexmk
     - run: latexmk -xelatex resume.tex
     - uses: actions/upload-artifact@v4
       with:
