@@ -38,3 +38,4 @@ jobs:
       with:
         name: resume
         path: resume.pdf
+        compression-level: 0
