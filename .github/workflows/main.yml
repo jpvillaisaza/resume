@@ -12,9 +12,9 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - run: |
-        brew install --cask mactex-no-gui
-        sudo tlmgr update --self
-        sudo tlmgr install latexmk
+      curl -O https://mirror.ctan.org/systems/mac/mactex/BasicTeX.pkg
+      sudo installer -pkg BasicTeX.pkg -target /
+      rm BasicTeX.pkg
     - run: latexmk -xelatex resume.tex
     - uses: actions/upload-artifact@v4
       with:
