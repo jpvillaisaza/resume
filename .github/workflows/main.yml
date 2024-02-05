@@ -12,14 +12,8 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - run: |
-        curl -LO https://mirror.ctan.org/systems/mac/mactex/BasicTeX.pkg
-        sudo installer -pkg BasicTeX.pkg -target /
-        rm BasicTeX.pkg
-    - run: ls /usr/local/texlive/2023basic/bin/universal-darwin
-    - run: echo "export PATH=/usr/local/texlive/2023basic/bin/universal-darwin:\$PATH" >> $GITHUB_ENV
-    - run: |
-        sudo tlmgr update --self
-        sudo tlmgr install latexmk
+        brew install --cask basictex
+        eval "$(/usr/libexec/path_helper)"
     - run: latexmk -xelatex resume.tex
     - uses: actions/upload-artifact@v4
       with:
