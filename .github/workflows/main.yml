@@ -12,9 +12,8 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - run: |
-        brew install --cask basictex
+        brew install --cask mactex-no-gui
         eval "$(/usr/libexec/path_helper)"
-    - run: sudo tlmgr install latexmk
     - run: latexmk -xelatex resume.tex
     - uses: actions/upload-artifact@v4
       with:
