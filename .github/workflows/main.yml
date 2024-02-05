@@ -1,3 +1,5 @@
+name: main
+
 on:
   push:
     branches:
@@ -11,16 +13,21 @@ jobs:
     runs-on: macos-14
     steps:
     - uses: actions/checkout@v4
-    - run: |
+    - name: Install TeX Live
+      run: |
         curl -LO https://mirror.ctan.org/systems/mac/mactex/BasicTeX.pkg
         sudo installer -pkg BasicTeX.pkg -target /
         rm BasicTeX.pkg
-    - run: echo "/usr/local/texlive/2023basic/bin/universal-darwin" >> $GITHUB_PATH
-    - run: sudo tlmgr update --self
-    - run: sudo tlmgr install latexmk
-    - run: sudo tlmgr install academicons arydshln fontawesome5 multirow
-    - run: sudo tlmgr install moderncv
-    - run: latexmk -xelatex resume.tex
-    - uses: actions/upload-artifact@v4
+        echo "/usr/local/texlive/2023basic/bin/universal-darwin" >> $GITHUB_PATH
+    - name: Install latexmk and moderncv
+      run: |
+        sudo tlmgr update --self
+        sudo tlmgr install latexmk moderncv \
+          academicons arydshln fontawesome5 multirow
+    - name: Build resume.pdf
+      run: latexmk -xelatex resume.tex
+    - name: Upload resume.pdf
+      uses: actions/upload-artifact@v4
       with:
+        name: resume
         path: resume.pdf
