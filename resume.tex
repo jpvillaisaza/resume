@@ -2,12 +2,16 @@
 
 \moderncvstyle{banking}
 
+\nopagenumbers{}
+
 \usepackage[scale=0.75]{geometry}
 
 \name{Juan Pedro}{Villa Isaza}
 \address{El Retiro, Colombia}
 \homepage{www.jpvillaisaza.com}
 \social[github]{jpvillaisaza}
+\social[linkedin]{jpvillaisaza}
+% \social[stackoverflow]{jpvillaisaza}
 
 \begin{document}
 
@@ -137,11 +141,34 @@
 
 \cventry
   {2016}
-  {}
-  {Licensor: A license compatibility helper for Haskell}
+  {A license compatibility helper for Haskell}
+  {Licensor}
   {Haskell}
   {}
-  {\link{https://github.com/jpvillaisaza/licensor}}
+  {
+    \href{https://github.com/jpvillaisaza/licensor}
+    {\texttt{https://github.com/jpvillaisaza/licensor}}
+  }
+\cventry
+  {}
+  {Colombian opinion articles aggregator}
+  {Hermes}
+  {Haskell}
+  {}
+  {
+    \href{https://github.com/jpvillaisaza/hermes}
+      {\texttt{github.com/jpvillaisaza/hermes}}
+  }
+\cventry
+  {}
+  {Fuel economy calculator}
+  {Zenith}
+  {Elm}
+  {}
+  {
+    \href{https://github.com/jpvillaisaza/zenith}
+      {\texttt{github.com/jpvillaisaza/zenith}}
+  }
 
 \section{Publications}
 
@@ -162,76 +189,70 @@
     \end{itemize}
   }
 
-\cventry
-  {2014--2024}
-  {Blog posts and tutorials}
-  {Stack Builders}
-  {}
-  {}
-  {
-    \begin{itemize}
-      \item
-        \href
-          {https://www.stackbuilders.com/blog/getting-started-with-haskell-projects-using-scotty/}
-          {Getting started with Haskell projects using Scotty (2021)}
-      \item
-        \href
-          {https://www.stackbuilders.com/blog/nonsense-getting-started-with-reason-and-reason-react/}
-          {Nonsense! Getting started with Reason and React (2020)}
-      \item
-        \href
-          {https://www.stackbuilders.com/blog/csv-encoding-decoding/}
-          {CSV encoding and decoding in Haskell with Cassava (2016)}
-      \item
-        \href
-          {https://www.stackbuilders.com/blog/reverse-reverse-theorem-proving-with-idris/}
-          {Reverse, reverse: Theorem proving with Idris (2015)}
-      \item
-        \href
-          {https://www.stackbuilders.com/blog/a-quickcheck-tutorial-generators/}
-          {A QuickCheck tutorial: Generators (2015, updated 2024)}
-      \item
-        \href
-          {https://www.stackbuilders.com/blog/the-hang-of-elm-hangman-and-functional-programming-with-elm/}
-          {The hang of Elm: Hangman and functional programming with Elm (2015)}
-      \item
-        \href
-          {https://www.stackbuilders.com/blog/errors-and-exceptions-in-haskell/}
-          {Errors and exceptions in Haskell (2015)}
-      \item
-        \href
-          {https://www.stackbuilders.com/blog/dr-hakyll-create-a-github-page-with-hakyll-and-circleci/}
-          {Dr. Hakyll: Create a GitHub page with Hakyll and CircleCI (2015)}
-      \item
-        \href
-          {https://www.stackbuilders.com/blog/obverse-versus-reverse-benchmarking-in-haskell-with-criterion/}
-          {Obverse versus reverse: Benchmarking in Haskell with Criterion (2015)}
-      % \item
-      %   \href
-      %     {https://www.stackbuilders.com/blog/how-to-program-it/}
-      %     {How to program it (2015)}
-      \item
-        \href
-          {https://www.stackbuilders.com/blog/hangman-imperative-functional-programming/}
-          {Hangman: Imperative functional programming (2015)}
-      \item
-        \href
-          {https://www.stackbuilders.com/blog/pattern-matching-wots-uh-the-deal/}
-          {Pattern matching: Wot's... Uh the Deal? (2015)}
-      % \item
-      %   \href
-      %     {https://www.stackbuilders.com/blog/the-notes-of-ghc/}
-      %     {The notes of GHC (2015)}
-      % \item
-      %   \href
-      %     {https://www.stackbuilders.com/blog/obverse-and-reverse/}
-      %     {Obverse versus reverse (2015)}
-      \item
-        \href
-          {https://www.stackbuilders.com/blog/the-weak-and-the-strong-functors/}
-          {The weak and the strong: functors (2014)}
-    \end{itemize}
-  }
+\subsection{Blog posts and tutorials}
+
+\begin{itemize}
+  \item
+    \href
+      {https://www.stackbuilders.com/blog/getting-started-with-haskell-projects-using-scotty/}
+      {Getting started with Haskell projects using Scotty (2021)}
+  \item
+    \href
+      {https://www.stackbuilders.com/blog/nonsense-getting-started-with-reason-and-reason-react/}
+      {Nonsense! Getting started with Reason and React (2020)}
+  \item
+    \href
+      {https://www.stackbuilders.com/blog/csv-encoding-decoding/}
+      {CSV encoding and decoding in Haskell with Cassava (2016)}
+  \item
+    \href
+      {https://www.stackbuilders.com/blog/reverse-reverse-theorem-proving-with-idris/}
+      {Reverse, reverse: Theorem proving with Idris (2015)}
+  \item
+    \href
+      {https://www.stackbuilders.com/blog/a-quickcheck-tutorial-generators/}
+      {A QuickCheck tutorial: Generators (2015, updated 2024)}
+  \item
+    \href
+      {https://www.stackbuilders.com/blog/the-hang-of-elm-hangman-and-functional-programming-with-elm/}
+      {The hang of Elm: Hangman and functional programming with Elm (2015)}
+  \item
+    \href
+      {https://www.stackbuilders.com/blog/errors-and-exceptions-in-haskell/}
+      {Errors and exceptions in Haskell (2015)}
+  \item
+    \href
+      {https://www.stackbuilders.com/blog/dr-hakyll-create-a-github-page-with-hakyll-and-circleci/}
+      {Dr. Hakyll: Create a GitHub page with Hakyll and CircleCI (2015)}
+  \item
+    \href
+      {https://www.stackbuilders.com/blog/obverse-versus-reverse-benchmarking-in-haskell-with-criterion/}
+      {Obverse versus reverse: Benchmarking in Haskell with Criterion (2015)}
+  % \item
+  %   \href
+  %     {https://www.stackbuilders.com/blog/how-to-program-it/}
+  %     {How to program it (2015)}
+  \item
+    \href
+      {https://www.stackbuilders.com/blog/hangman-imperative-functional-programming/}
+      {Hangman: Imperative functional programming (2015)}
+  \item
+    \href
+      {https://www.stackbuilders.com/blog/pattern-matching-wots-uh-the-deal/}
+      {Pattern matching: Wot's... Uh the Deal? (2015)}
+  % \item
+  %   \href
+  %     {https://www.stackbuilders.com/blog/the-notes-of-ghc/}
+  %     {The notes of GHC (2015)}
+  % \item
+  %   \href
+  %     {https://www.stackbuilders.com/blog/obverse-and-reverse/}
+  %     {Obverse versus reverse (2015)}
+  \item
+    \href
+      {https://www.stackbuilders.com/blog/the-weak-and-the-strong-functors/}
+      {The weak and the strong: functors (2014)}
+\end{itemize}
 
 \subsection{Presentations}
 
