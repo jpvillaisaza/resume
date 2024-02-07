@@ -4,6 +4,8 @@ on:
   push:
     branches:
     - main
+    tags:
+    - '*'
   pull_request:
     branches:
     - main
@@ -30,11 +32,30 @@ jobs:
         sudo tlmgr install latexmk moderncv \
           academicons arydshln fontawesome5 multirow
 
-    - name: Build resume
-      run: latexmk -xelatex resume.tex
+    - if: github.ref_type != 'tag'
+      name: Build resume
+      run: latexmk -jobname=${{ env.JOB_NAME }} -xelatex resume.tex
+      env:
+        JOB_NAME: jpvillaisaza-resume-${{ github.sha }}
+        VERSION: ${{ github.sha }}
 
-    - name: Upload resume
+    - if: github.ref_type == 'tag'
+      name: Build resume for tag
+      run: latexmk -jobname=${{ env.JOB_NAME }} -xelatex resume.tex
+      env:
+        JOB_NAME: jpvillaisaza-resume-${{ github.ref_name }}
+        VERSION: ${{ github.ref_name }}
+
+    - if: github.ref_type != 'tag'
+      name: Upload resume
       uses: actions/upload-artifact@v4
       with:
-        name: resume
-        path: resume.pdf
+        name: jpvillaisaza-resume-${{ github.sha }}
+        path: jpvillaisaza-resume-${{ github.sha }}.pdf
+
+    - if: github.ref_type == 'tag'
+      name: Release resume
+      uses: softprops/action-gh-release@v1
+      with:
+        files: jpvillaisaza-resume-${{ github.ref_name }}.pdf
+        tag_name: ${{ github.ref_name }}
