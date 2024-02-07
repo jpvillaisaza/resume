@@ -4,6 +4,8 @@ on:
   push:
     branches:
     - main
+    tags:
+    - '*'
   pull_request:
     branches:
     - main
@@ -32,9 +34,18 @@ jobs:
 
     - name: Build resume
       run: latexmk -xelatex resume.tex
+      env:
+        VERSION: ${{ github.ref_name }}
 
     - name: Upload resume
       uses: actions/upload-artifact@v4
       with:
-        name: resume
+        name: jpvillaisaza-resume-${{ github.ref_name }}.pdf
         path: resume.pdf
+
+    - if: github.ref_type == 'tag'
+      name: Release resume
+      uses: softprops/actions-gh-release@v1
+      with:
+        files: jpvillaisaza-resume-${{ github.ref_name }}.pdf
+        tag_name: ${{ github.ref_name }}
