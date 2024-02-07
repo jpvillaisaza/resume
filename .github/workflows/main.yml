@@ -45,7 +45,7 @@ jobs:
 
     - if: github.ref_type == 'tag'
       name: Release resume
-      uses: softprops/actions-gh-release@v1
+      uses: softprops/action-gh-release@v1
       with:
         files: jpvillaisaza-resume-${{ github.ref_name }}.pdf
         tag_name: ${{ github.ref_name }}
