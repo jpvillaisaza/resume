@@ -36,14 +36,14 @@ jobs:
       name: Build resume
       run: latexmk -jobname=${{ env.JOB_NAME }} -xelatex resume.tex
       env:
-        JOB_NAME: jpvillaisaza-resume-${{ env.VERSION }}
+        JOB_NAME: jpvillaisaza-resume-${{ github.sha }}
         VERSION: ${{ github.sha }}
 
     - if: github.ref_type == 'tag'
       name: Build resume for tag
       run: latexmk -jobname=${{ env.JOB_NAME }} -xelatex resume.tex
       env:
-        JOB_NAME: jpvillaisaza-resume-${{ env.VERSION }}
+        JOB_NAME: jpvillaisaza-resume-${{ github.ref_name }}
         VERSION: ${{ github.ref_name }}
 
     - if: github.ref_type != 'tag'
