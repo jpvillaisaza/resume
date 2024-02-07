@@ -34,22 +34,24 @@ jobs:
 
     - if: github.ref_type != 'tag'
       name: Build resume
-      run: latexmk -xelatex resume.tex
+      run: latexmk -jobname=${{ env.JOB_NAME }} -xelatex resume.tex
       env:
+        JOB_NAME: jpvillaisaza-resume-${{ env.VERSION }}
         VERSION: ${{ github.sha }}
 
     - if: github.ref_type == 'tag'
-      name: Build resume
-      run: latexmk -xelatex resume.tex
+      name: Build resume for tag
+      run: latexmk -jobname=${{ env.JOB_NAME }} -xelatex resume.tex
       env:
+        JOB_NAME: jpvillaisaza-resume-${{ env.VERSION }}
         VERSION: ${{ github.ref_name }}
 
     - if: github.ref_type != 'tag'
       name: Upload resume
       uses: actions/upload-artifact@v4
       with:
-        name: jpvillaisaza-resume-${{ github.sha }}.pdf
-        path: resume.pdf
+        name: jpvillaisaza-resume-${{ github.sha }}
+        path: jpvillaisaza-resume-${{ github.sha }}.pdf
 
     - if: github.ref_type == 'tag'
       name: Release resume
