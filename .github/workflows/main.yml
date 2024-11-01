@@ -12,36 +12,24 @@ on:
 
 jobs:
   build:
-    runs-on: macos-14
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
 
-    - name: Install BasicTeX
-      run: |
-        curl -LO https://mirror.ctan.org/systems/mac/mactex/BasicTeX.pkg
-        sudo installer -pkg BasicTeX.pkg -target /
-        rm BasicTeX.pkg
-        echo "/usr/local/texlive/2023basic/bin/universal-darwin" >> $GITHUB_PATH
-
-    - name: Check BasicTeX installation
-      run: tlmgr --version
-
-    - name: Install latexmk and LaTeX packages
-      run: |
-        sudo tlmgr update --self
-        sudo tlmgr install latexmk moderncv \
-          academicons arydshln fontawesome5 multirow
+    - uses: cachix/install-nix-action@v27
+      with:
+        nix_path: nixpkgs=channel:nixos-24.05
 
     - if: github.ref_type != 'tag'
       name: Build resume
-      run: latexmk -jobname=${{ env.JOB_NAME }} -xelatex resume.tex
+      run: nix-shell --run "latexmk -jobname=${{ env.JOB_NAME }} -xelatex resume.tex"
       env:
         JOB_NAME: jpvillaisaza-resume-${{ github.sha }}
         VERSION: ${{ github.sha }}
 
     - if: github.ref_type == 'tag'
       name: Build resume for tag
-      run: latexmk -jobname=${{ env.JOB_NAME }} -xelatex resume.tex
+      run: nix-shell --run "latexmk -jobname=${{ env.JOB_NAME }} -xelatex resume.tex"
       env:
         JOB_NAME: jpvillaisaza-resume-${{ github.ref_name }}
         VERSION: ${{ github.ref_name }}
