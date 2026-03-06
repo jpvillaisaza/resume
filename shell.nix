@@ -1,8 +1,5 @@
-{
-  pkgs ? import <nixpkgs> { },
-}:
-
 let
+  pkgs = import (fetchTarball "channel:nixos-25.11") { };
   tex = (
     pkgs.texlive.combine {
       inherit (pkgs.texlive)
@@ -17,6 +14,7 @@ let
     }
   );
 in
+
 pkgs.mkShell {
   buildInputs = [
     pkgs.git
